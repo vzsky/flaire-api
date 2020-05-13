@@ -10,12 +10,12 @@ import { AdminGuard } from './Guard'
 import '../env'
 
 @Module({
-    imports: [
-        JwtModule.register({ secret: process.env.SECRET }),
-        MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
-    ],
-    providers: [UserService, LocalStrategy, JwtStrategy, AdminGuard],
-    controllers: [UserController],
-    exports: [UserService, AdminGuard],
+  imports: [
+    JwtModule.register({ secret: process.env.SECRET }),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])
+  ],
+  providers: [UserService, LocalStrategy, JwtStrategy, AdminGuard],
+  controllers: [UserController],
+  exports: [UserService, AdminGuard]
 })
 export class UserModule {}

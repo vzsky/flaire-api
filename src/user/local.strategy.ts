@@ -6,15 +6,15 @@ import { ResponseType } from '../helper'
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-    constructor(private userService: UserService) {
-        super()
-    }
+  constructor(private userService: UserService) {
+    super()
+  }
 
-    async validate(username: string, password: string): Promise<ResponseType> {
-        const user = await this.userService.login(username, password)
-        if (user.status === 'Error') {
-            throw new UnauthorizedException()
-        }
-        return user
+  async validate(username: string, password: string): Promise<ResponseType> {
+    const user = await this.userService.login(username, password)
+    if (user.status === 'Error') {
+      throw new UnauthorizedException()
     }
+    return user
+  }
 }
